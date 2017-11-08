@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.lang.String;
 import java.util.Collection;
 
-import javax.jms.JMSSessionMode;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
@@ -72,6 +73,7 @@ public class Logement implements Serializable {
 		this.hote = hote;
 	}
 
+	@JsonIgnore
 	public Collection<Reservation> getReservations() {
 		return reservations;
 	}
@@ -81,7 +83,7 @@ public class Logement implements Serializable {
 		this.reservations = reservations;
 	}
 
-
+	@JsonIgnore
 	public Collection<Disponibilite> getDisponibilites() {
 		return disponibilites;
 	}

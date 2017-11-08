@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.util.Collection;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import metier.entities.Personne;
 
 
@@ -20,6 +23,7 @@ public class Client extends Personne implements Serializable {
 	}
 
 
+	@JsonIgnore
 	public Collection<Reservation> getReservations() {
 		return reservations;
 	}
