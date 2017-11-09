@@ -7,6 +7,8 @@ import java.util.Collection;
 import javax.jms.JMSSessionMode;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_PERSONNE",discriminatorType=DiscriminatorType.STRING,length=2)
@@ -91,6 +93,7 @@ public class Personne implements Serializable {
 	}
 
 
+	@JsonIgnore
 	public Collection<Reclamation> getReclamations() {
 		return reclamations;
 	}
@@ -101,6 +104,7 @@ public class Personne implements Serializable {
 	}
 
 
+	@JsonIgnore
 	public Collection<Commentaire> getCommentaires_donne() {
 		return commentaires_donne;
 	}
@@ -110,6 +114,7 @@ public class Personne implements Serializable {
 		this.commentaires_donne = commentaires_donne;
 	}
 
+	@JsonIgnore
 	public Collection<Commentaire> getCommentaires_subi() {
 		return commentaires_subi;
 	}

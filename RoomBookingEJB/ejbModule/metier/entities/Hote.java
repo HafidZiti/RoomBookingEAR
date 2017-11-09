@@ -7,6 +7,8 @@ import java.util.Collection;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @DiscriminatorValue("HO")
 public class Hote extends Personne implements Serializable {
@@ -35,7 +37,7 @@ public class Hote extends Personne implements Serializable {
 		this.RIP = RIP;
 	}
 
-
+	@JsonIgnore
 	public Collection<Logement> getLogements() {
 		return logements;
 	}
