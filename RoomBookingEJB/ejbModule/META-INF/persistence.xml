@@ -3,15 +3,13 @@
 	<persistence-unit name="RoomBookingEJB" transaction-type="JTA">
 		<jta-data-source>java:/dsRoomBooking</jta-data-source>
 		<class>metier.entities.Logement</class>
-		<class>metier.entities.Personne</class>
-		<class>metier.entities.Hote</class>
 		<class>metier.entities.Client</class>
 		<class>metier.entities.Reservation</class>
 		<class>metier.entities.Disponibilite</class>
 		<class>metier.entities.Reclamation</class>
 		<class>metier.entities.Commentaire</class>
-	<!-- 	<properties>
+	 	<!-- <properties>
 			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-		</properties> -->
+		</properties>  -->
 	</persistence-unit>
 </persistence>

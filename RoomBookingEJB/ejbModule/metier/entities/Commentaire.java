@@ -18,12 +18,12 @@ public class Commentaire implements Serializable {
 	private Date date;
 	
 	@ManyToOne
-	@JoinColumn(name="CODE_PERSONNE_PAR")
-	private Personne personne_par;
+	@JoinColumn(name="CODE_CLIENT_PAR")
+	private Client client_par;
 	
 	@ManyToOne
-	@JoinColumn(name="CODE_PERSONNE_VERS")
-	private Personne personne_vers;
+	@JoinColumn(name="CODE_CLIENT_VERS")
+	private Client client_vers;
 	
 	
 

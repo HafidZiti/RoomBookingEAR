@@ -15,8 +15,8 @@ public class Reclamation implements Serializable {
 	private String Object;
 	
 	@ManyToOne()
-	@JoinColumn(name="CODE_PERSONNE_PAR")
-	private Personne personne;
+	@JoinColumn(name="CODE_CLIENT_PAR")
+	private Client client;
 
 	
 	public Reclamation() {
@@ -30,12 +30,12 @@ public class Reclamation implements Serializable {
 	}
 
 
-	public Personne getPersonne() {
-		return personne;
+	public Client getPersonne() {
+		return client;
 	}
 
-	public void setPersonne(Personne personne) {
-		this.personne = personne;
+	public void setPersonne(Client client) {
+		this.client = client;
 	}
 
 	public int getId_reclamation() {

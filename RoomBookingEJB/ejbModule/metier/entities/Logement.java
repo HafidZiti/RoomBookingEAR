@@ -20,8 +20,8 @@ public class Logement implements Serializable {
 	private String description;
 	private String adresse;
 	@ManyToOne()
-	@JoinColumn(name="CODE_HOTE")
-	private Hote hote;
+	@JoinColumn(name="CODE_CLIENT")
+	private Client client;
 	
 	@OneToMany(mappedBy="logement",fetch = FetchType.EAGER)
 	private Collection<Reservation> reservations;
@@ -64,13 +64,13 @@ public class Logement implements Serializable {
 	}
 
 
-	public Hote getHote() {
-		return hote;
+	public Client getClient() {
+		return client;
 	}
 
 
-	public void setHote(Hote hote) {
-		this.hote = hote;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
 	@JsonIgnore

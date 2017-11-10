@@ -5,7 +5,6 @@ import java.util.List;
 import javax.ejb.Local;
 
 import metier.entities.Client;
-import metier.entities.Hote;
 
 @Local
 public interface ClientLocal {

@@ -10,7 +10,6 @@ import javax.persistence.Query;
 
 import metier.dao.DispoLocal;
 import metier.entities.Disponibilite;
-import metier.entities.Hote;
 
 
 @Stateless(name="Di")
@@ -29,7 +28,7 @@ public class DispoEJBImpl implements DispoLocal {
 	@Override
 	public Disponibilite getDisponibilite(int id) {
 		Disponibilite d = em.find(Disponibilite.class, id);
-		if (d==null) throw new RuntimeException("Disponibilité introuvable!!");
+		if (d==null) throw new RuntimeException("Disponibilitï¿½ introuvable!!");
 		return d;
 	}
 
