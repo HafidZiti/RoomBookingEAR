@@ -20,6 +20,8 @@ public class Client implements Serializable {
 	private String email;
 	private String telephone;
 	private String adresse;
+	private String mdp;
+	private Boolean isHote;
 	
 	@OneToMany(mappedBy="client", fetch=FetchType.LAZY)
 	private Collection<Reservation> reservations;
@@ -148,5 +150,26 @@ public class Client implements Serializable {
 		this.logements = logements;
 	}
 
+
+	public String getMdp() {
+		return mdp;
+	}
+
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+
+	public Boolean getIsHote() {
+		return isHote;
+	}
+
+
+	public void setIsHote(Boolean isHote) {
+		this.isHote = isHote;
+	}
+	
+	
    
 }
