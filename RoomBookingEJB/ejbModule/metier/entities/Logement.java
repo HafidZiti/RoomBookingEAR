@@ -17,30 +17,52 @@ public class Logement implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id_logement;
-	private String description;
+	private String titre;
+	private int nbt_voyageurs;
+	private int nbr_chamber;
+	private int nbr_salle_bain;
+	private double prix;
+	private String ville;
+	private int code_postal;
 	private String adresse;
+	private String description;
+	
 	@ManyToOne()
 	@JoinColumn(name="CODE_CLIENT")
 	private Client client;
 	
-	@OneToMany(mappedBy="logement",fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="logement",fetch = FetchType.LAZY)
 	private Collection<Reservation> reservations;
 	
 	@OneToMany(mappedBy="logement")
 	private Collection<Disponibilite> disponibilites;
+	
+	@OneToMany(mappedBy="logement",fetch = FetchType.LAZY)
+	private Collection<Image> images;
+	
+	@OneToMany(mappedBy="logement",fetch = FetchType.LAZY)
+	private Collection<Logement_equipement> logement_equipements;
 
 	public Logement() {
 		super();
 	}   
 	
-	
-	public Logement(String description, String adresse) {
+	public Logement(int id_logement, String titre, int nbt_voyageurs, int nbr_chamber, int nbr_salle_bain, double prix,
+			String ville, int code_postal, String adresse, String description) {
 		super();
-		this.description = description;
+		this.id_logement = id_logement;
+		this.titre = titre;
+		this.nbt_voyageurs = nbt_voyageurs;
+		this.nbr_chamber = nbr_chamber;
+		this.nbr_salle_bain = nbr_salle_bain;
+		this.prix = prix;
+		this.ville = ville;
+		this.code_postal = code_postal;
 		this.adresse = adresse;
+		this.description = description;
 	}
 
-	
+
 	public int getId_logement() {
 		return this.id_logement;
 	}
@@ -92,7 +114,109 @@ public class Logement implements Serializable {
 	public void setDisponibilites(Collection<Disponibilite> disponibilites) {
 		this.disponibilites = disponibilites;
 	}
-	
-	
-   
+
+
+	public String getTitre() {
+		return titre;
+	}
+
+
+	public void setTitre(String titre) {
+		this.titre = titre;
+	}
+
+
+	public int getNbt_voya_adultes() {
+		return nbt_voyageurs;
+	}
+
+
+	public void setNbt_voya_adultes(int nbt_voya_adultes) {
+		this.nbt_voyageurs = nbt_voya_adultes;
+	}
+
+
+	public int getNbt_voya_enfants() {
+		return nbt_voyageurs;
+	}
+
+
+	public void setNbt_voya_enfants(int nbt_voya_enfants) {
+		this.nbt_voyageurs = nbt_voya_enfants;
+	}
+
+
+	public int getNbr_chamber() {
+		return nbr_chamber;
+	}
+
+
+	public void setNbr_chamber(int nbr_chamber) {
+		this.nbr_chamber = nbr_chamber;
+	}
+
+
+	public int getNbr_salle_bain() {
+		return nbr_salle_bain;
+	}
+
+
+	public void setNbr_salle_bain(int nbr_salle_bain) {
+		this.nbr_salle_bain = nbr_salle_bain;
+	}
+
+
+	public double getPrix() {
+		return prix;
+	}
+
+
+	public void setPrix(double prix) {
+		this.prix = prix;
+	}
+
+
+	public String getVille() {
+		return ville;
+	}
+
+
+	public void setVille(String ville) {
+		this.ville = ville;
+	}
+
+
+	public int getCode_postal() {
+		return code_postal;
+	}
+
+
+	public void setCode_postal(int code_postal) {
+		this.code_postal = code_postal;
+	}
+
+	public int getNbt_voyageurs() {
+		return nbt_voyageurs;
+	}
+
+
+	public void setNbt_voyageurs(int nbt_voyageurs) {
+		this.nbt_voyageurs = nbt_voyageurs;
+	}
+
+	public Collection<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(Collection<Image> images) {
+		this.images = images;
+	}
+
+	public Collection<Logement_equipement> getLogement_equipements() {
+		return logement_equipements;
+	}
+
+	public void setLogement_equipements(Collection<Logement_equipement> logement_equipements) {
+		this.logement_equipements = logement_equipements;
+	}
 }

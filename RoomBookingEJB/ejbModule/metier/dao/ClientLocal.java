@@ -15,5 +15,6 @@ public interface ClientLocal {
 	public Client updateClient(int id, String adresse, String email,String telephone, String nom,
 								   String prenom);
 	public void deleteClient(int id);
+	public Client devenirHote(int id);
 
 }

@@ -19,12 +19,12 @@ import metier.entities.Client;
 
 @Stateless
 @Path("/")
+
 public class ClientRestService {
 	
 	@EJB
 	private ClientLocal metier;
 
-	
 	@POST
 	@Path("/client") //JSON(application/json)
 	@Produces(MediaType.APPLICATION_JSON)
@@ -64,4 +64,12 @@ public class ClientRestService {
 	public void deleteClient(@PathParam(value="id") int id) {
 		metier.deleteClient(id);
 	}
+	
+	@PUT
+	@Path("/client/setHote/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Client devenirHote(@PathParam(value="id") int id) {
+		return metier.devenirHote(id);
+	}
+
 }

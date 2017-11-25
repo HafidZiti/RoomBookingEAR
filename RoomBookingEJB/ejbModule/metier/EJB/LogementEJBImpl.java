@@ -18,6 +18,8 @@ public class LogementEJBImpl implements LogementLocal {
 	@PersistenceContext(unitName="RoomBookingEJB")
 	private EntityManager em;
 	
+	
+	
 	@Override
 	public Logement addLogement(Logement L) {
 		em.persist(L);
@@ -54,6 +56,31 @@ public class LogementEJBImpl implements LogementLocal {
 	      em.remove(h);
 	    }
 		
+	}
+
+	@Override
+	public PageLogement getPageLogement(int page, int size) {
+		Query query = em.createQuery("select l from Logement l");
+		int pageNumber = page;
+		int pageSize = size;
+		query.setFirstResult((pageNumber) * pageSize); 
+		query.setMaxResults(pageSize);
+		List <Logement> fooList = query.getResultList();
+		
+		
+		Query queryTotal = em.createQuery ("Select count(l.id_logement) from Logement l");
+		long countResult = (long)queryTotal.getSingleResult();
+		int nbrs = (int) ((countResult / size));
+		
+		
+		PageLogement pagelog= new PageLogement();
+		pagelog.setLogemens(fooList);
+		pagelog.setTotalLogement(countResult);
+		pagelog.setTotal(nbrs);
+		pagelog.setPages(page);
+		
+		
+		return pagelog;
 	}
 
 }

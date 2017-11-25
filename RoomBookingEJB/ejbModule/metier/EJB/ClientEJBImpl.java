@@ -56,4 +56,11 @@ public class ClientEJBImpl implements ClientLocal {
 
 	}
 
+	@Override
+	public Client devenirHote(int id) {
+		Client p = em.find(Client.class, id);
+		p.setIsHote(true);
+		return p;
+	}
+
 }
