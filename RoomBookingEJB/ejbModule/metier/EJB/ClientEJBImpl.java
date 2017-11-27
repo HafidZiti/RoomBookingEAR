@@ -23,6 +23,14 @@ public class ClientEJBImpl implements ClientLocal {
 	}
 
 	@Override
+	public Client getClient(String mail, String mdp) {
+		Query req = em.createQuery("select c from Client c where c.email='"+mail+"' and c.mdp='"+mdp+"'");
+		Client h = (Client) req.getSingleResult();
+		if (h==null) throw new RuntimeException("Aucun compte n'est associé à ces identifiants !");
+		return h;
+	}
+
+	@Override
 	public Client getClient(int id) {
 		Client h = em.find(Client.class, id);
 		if (h==null) throw new RuntimeException("Client introuvable!!");

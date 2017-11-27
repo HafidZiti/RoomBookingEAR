@@ -31,7 +31,15 @@ public class ClientRestService {
 	public Client addClient(Client L) {
 		return metier.addClient(L);
 	}
-
+	
+	@GET
+	@Path("/client/login/{email}/{mdp}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Client doLogin(@PathParam(value="email") String email, @PathParam(value="mdp") String mdp ) {
+		return metier.getClient(email,mdp);
+	}
+	
+	
 	@GET
 	@Path("/client/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
