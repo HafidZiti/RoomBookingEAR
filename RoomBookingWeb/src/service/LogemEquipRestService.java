@@ -1,6 +1,8 @@
 package service;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -14,6 +16,7 @@ import metier.entities.Logement_equipement;
 @Path("/")
 public class LogemEquipRestService {
 	
+	@EJB
 	private Logement_equipementLocal metier;
 
 	
@@ -25,7 +28,7 @@ public class LogemEquipRestService {
 	}
 
 	
-	@POST
+	@DELETE
 	@Path("/logement_equipement") //JSON(application/json)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void deleteLogemEquip(@PathParam(value="id") int id) {

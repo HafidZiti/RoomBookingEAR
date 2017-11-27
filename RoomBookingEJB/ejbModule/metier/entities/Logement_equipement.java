@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 @Entity
 @IdClass(Logement_Equipement_ID.class)
@@ -28,12 +29,15 @@ public class Logement_equipement implements Serializable{
 	public Logement_equipement() {
 		super();
 	}
+	
+	
 
 	@JsonIgnore
 	public Equipement getEquipement() {
 		return equipement;
 	}
 
+	@JsonSetter
 	public void setEquipement(Equipement equipement) {
 		this.equipement = equipement;
 	}
@@ -43,6 +47,7 @@ public class Logement_equipement implements Serializable{
 		return logement;
 	}
 
+	@JsonSetter
 	public void setLogement(Logement logement) {
 		this.logement = logement;
 	}

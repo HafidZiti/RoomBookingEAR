@@ -16,6 +16,7 @@ import javax.ws.rs.core.MediaType;
 
 import metier.EJB.PageLogement;
 import metier.dao.LogementLocal;
+import metier.entities.Equipement;
 import metier.entities.Logement;
 
 @Stateless
@@ -25,7 +26,6 @@ public class LogementRestService {
 	@EJB
 	private LogementLocal metier;
 
-	
 	@GET
 	@Path("/pagelogement/{page}/{size}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -39,6 +39,13 @@ public class LogementRestService {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Logement addLogement(Logement L) {
 		return metier.addLogement(L);
+	}
+	
+	@POST
+	@Path("/log_equi")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void addequip_logement() {
+		metier.addequip_logement();
 	}
 
 	@GET

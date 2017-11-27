@@ -2,13 +2,19 @@ package metier.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 @Entity
@@ -19,8 +25,11 @@ public class Equipement implements Serializable {
 	private int id_equip;
 	private String nom_equipement;
 	
-	@OneToMany(mappedBy="equipement",fetch = FetchType.LAZY)
-	private Collection<Logement_equipement> logement_equipements;
+//	@OneToMany(mappedBy="equipement",fetch = FetchType.LAZY)
+//	private Collection<Logement_equipement> logement_equipements;
+	
+	@ManyToMany(mappedBy="equipements", cascade =  CascadeType.PERSIST)
+	private Set<Logement> logements;
 
 	public Equipement() {
 		super();
@@ -49,12 +58,14 @@ public class Equipement implements Serializable {
 		this.nom_equipement = nom_equipement;
 	}
 
-	public Collection<Logement_equipement> getLogement_equipements() {
-		return logement_equipements;
+	@JsonIgnore
+	public Set<Logement> getLogement_equipements() {
+		return this.logements;
 	}
 
-	public void setLogement_equipements(Collection<Logement_equipement> logement_equipements) {
-		this.logement_equipements = logement_equipements;
+	@JsonSetter
+	public void setLogement_equipements(Set<Logement> logement_equipements) {
+		this.logements = logement_equipements;
 	}
 	
 	

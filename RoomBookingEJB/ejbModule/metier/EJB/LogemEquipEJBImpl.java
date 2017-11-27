@@ -7,7 +7,7 @@ import javax.persistence.PersistenceContext;
 import metier.dao.Logement_equipementLocal;
 import metier.entities.Logement_equipement;
 
-@Stateless(name="Lq")
+@Stateless(name="LQ")
 public class LogemEquipEJBImpl implements Logement_equipementLocal {
 
 	

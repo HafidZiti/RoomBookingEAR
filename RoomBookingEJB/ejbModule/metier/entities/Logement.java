@@ -3,10 +3,14 @@ package metier.entities;
 import java.io.Serializable;
 import java.lang.String;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 
 @Entity
@@ -40,8 +44,16 @@ public class Logement implements Serializable {
 	@OneToMany(mappedBy="logement",fetch = FetchType.LAZY)
 	private Collection<Image> images;
 	
-	@OneToMany(mappedBy="logement",fetch = FetchType.LAZY)
-	private Collection<Logement_equipement> logement_equipements;
+//	@OneToMany(mappedBy="logement",fetch = FetchType.LAZY)
+//private Collection<Logement_equipement> logement_equipements;
+	  @ManyToMany(cascade = CascadeType.PERSIST)
+	  @JoinTable(name="logement_equipement02",
+	      joinColumns=@JoinColumn(name="id_log"),
+	      inverseJoinColumns=@JoinColumn(name="id_equip"))
+	  
+	  private List<Equipement> equipements;
+	  
+	
 
 	public Logement() {
 		super();
@@ -208,15 +220,17 @@ public class Logement implements Serializable {
 		return images;
 	}
 
+	@JsonSetter
 	public void setImages(Collection<Image> images) {
 		this.images = images;
 	}
 
-	public Collection<Logement_equipement> getLogement_equipements() {
-		return logement_equipements;
+	public List<Equipement> getLogement_equipements() {
+		return this.equipements;
 	}
 
-	public void setLogement_equipements(Collection<Logement_equipement> logement_equipements) {
-		this.logement_equipements = logement_equipements;
+	@JsonSetter
+	public void setLogement_equipements(List<Equipement> logement_equipements) {
+		this.equipements = logement_equipements;
 	}
 }

@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 
 @Entity
@@ -56,6 +57,7 @@ public class Image implements Serializable{
 		return logement;
 	}
 
+	@JsonSetter
 	public void setLogement(Logement logement) {
 		this.logement = logement;
 	}

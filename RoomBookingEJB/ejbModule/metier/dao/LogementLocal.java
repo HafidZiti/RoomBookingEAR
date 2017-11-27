@@ -6,6 +6,7 @@ import javax.ejb.Local;
 
 import metier.EJB.PageLogement;
 import metier.entities.Disponibilite;
+import metier.entities.Equipement;
 import metier.entities.Logement;
 
 @Local
@@ -17,5 +18,7 @@ public interface LogementLocal {
 	public void deleteLogement (int id);
 	
 	public PageLogement getPageLogement(int page, int size);
+	
+	public void addequip_logement();
 
 }

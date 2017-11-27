@@ -1,6 +1,9 @@
 package metier.EJB;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -8,8 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import metier.dao.LogementLocal;
-
-
+import metier.entities.Equipement;
 import metier.entities.Logement;
 
 @Stateless(name="LG")
@@ -24,6 +26,18 @@ public class LogementEJBImpl implements LogementLocal {
 	public Logement addLogement(Logement L) {
 		em.persist(L);
 		return L;
+	}
+	
+	@Override
+	public void addequip_logement() {
+		Logement l = em.find(Logement.class, 2);
+		Equipement e = em.find(Equipement.class, 1);
+		List<Equipement> es = new ArrayList<Equipement>();
+		es.add(e);
+		//l.setLogement_equipements(es);
+		l.getLogement_equipements().add(e);
+		em.persist(l);
+		
 	}
 
 	@Override
@@ -82,5 +96,6 @@ public class LogementEJBImpl implements LogementLocal {
 		
 		return pagelog;
 	}
+
 
 }
