@@ -29,15 +29,9 @@ public class LogementEJBImpl implements LogementLocal {
 	}
 	
 	@Override
-	public void addequip_logement() {
-		Logement l = em.find(Logement.class, 2);
-		Equipement e = em.find(Equipement.class, 1);
-		List<Equipement> es = new ArrayList<Equipement>();
-		es.add(e);
-		//l.setLogement_equipements(es);
-		l.getLogement_equipements().add(e);
-		em.persist(l);
-		
+	public void add_equip_logement(int id, Set<Equipement> equips) {
+		Logement l = em.find(Logement.class, id);
+		equips.forEach((e) -> {l.getEquipements().add(em.find(Equipement.class, e.getId_equip()));});
 	}
 
 	@Override

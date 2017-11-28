@@ -25,15 +25,11 @@ public class Equipement implements Serializable {
 	private int id_equip;
 	private String nom_equipement;
 	
-//	@OneToMany(mappedBy="equipement",fetch = FetchType.LAZY)
-//	private Collection<Logement_equipement> logement_equipements;
-	
-	@ManyToMany(mappedBy="equipements", cascade =  CascadeType.PERSIST)
+	@ManyToMany(mappedBy="equipements",cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
 	private Set<Logement> logements;
 
 	public Equipement() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Equipement(int id_equip, String nom_equipement) {
@@ -59,14 +55,21 @@ public class Equipement implements Serializable {
 	}
 
 	@JsonIgnore
-	public Set<Logement> getLogement_equipements() {
+	public Set<Logement> getLogements() {
 		return this.logements;
 	}
 
-	@JsonSetter
-	public void setLogement_equipements(Set<Logement> logement_equipements) {
-		this.logements = logement_equipements;
+	//@JsonSetter
+	public void setLogements(Set<Logement> logements) {
+		this.logements = logements;
 	}
+
+	@Override
+	public String toString() {
+		return "Equipement [id_equip=" + id_equip + ", nom_equipement=" + nom_equipement + "]";
+	}
+	
+	
 	
 	
 

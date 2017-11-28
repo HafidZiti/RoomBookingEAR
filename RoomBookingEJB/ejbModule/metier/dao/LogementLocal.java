@@ -1,6 +1,7 @@
 package metier.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.Local;
 
@@ -19,6 +20,6 @@ public interface LogementLocal {
 	
 	public PageLogement getPageLogement(int page, int size);
 	
-	public void addequip_logement();
+	public void add_equip_logement(int id, Set<Equipement> equips);
 
 }

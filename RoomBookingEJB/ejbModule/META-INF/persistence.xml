@@ -10,9 +10,8 @@
 		<class>metier.entities.Commentaire</class>
 		<class>metier.entities.Image</class>
 		<class>metier.entities.Equipement</class>
-		<class>metier.entities.Logement_equipement</class>
-		 <!-- <properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-		</properties> --> 
+		<!--  <properties>
+				<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+		 </properties> -->
 	</persistence-unit>
 </persistence>

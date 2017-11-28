@@ -1,6 +1,7 @@
 package service;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -42,10 +43,15 @@ public class LogementRestService {
 	}
 	
 	@POST
-	@Path("/log_equi")
+	@Path("/log_equip/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public void addequip_logement() {
-		metier.addequip_logement();
+	public void addequip_logement(@PathParam(value="id") int id, Set<Equipement> equips) {
+		
+		//equips.forEach((e) -> {System.out.println("Afficher"+e.getId_equip());});
+		//System.out.println("Affiche 02 "+ id);
+		//l.forEach((i) -> {System.out.println("Afficher"+i.getId_logement());}); 
+		//System.out.println("afficher" + l.getId_logement());
+		metier.add_equip_logement( id,  equips);
 	}
 
 	@GET
