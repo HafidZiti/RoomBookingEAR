@@ -25,7 +25,7 @@ public class Equipement implements Serializable {
 	private int id_equip;
 	private String nom_equipement;
 	
-	@ManyToMany(mappedBy="equipements",cascade = CascadeType.PERSIST, fetch=FetchType.LAZY)
+	@ManyToMany(mappedBy="equipements",cascade = CascadeType.MERGE, fetch=FetchType.LAZY)
 	private Set<Logement> logements;
 
 	public Equipement() {

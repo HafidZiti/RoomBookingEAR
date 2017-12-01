@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.ejb.Local;
 
+import Beans.LogementBean;
+import metier.EJB.LogementEJBImpl;
 import metier.EJB.PageLogement;
 import metier.entities.Disponibilite;
 import metier.entities.Equipement;
@@ -21,5 +23,7 @@ public interface LogementLocal {
 	public PageLogement getPageLogement(int page, int size);
 	
 	public void add_equip_logement(int id, Set<Equipement> equips);
+	
+	public Logement addLogementBean(LogementBean lb);
 
 }

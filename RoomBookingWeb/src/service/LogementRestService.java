@@ -15,6 +15,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import Beans.LogementBean;
 import metier.EJB.PageLogement;
 import metier.dao.LogementLocal;
 import metier.entities.Equipement;
@@ -26,6 +27,13 @@ public class LogementRestService {
 	
 	@EJB
 	private LogementLocal metier;
+
+	@POST
+	@Path("/logement_bean")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Logement addLogementBean(LogementBean lb) {
+		return metier.addLogementBean(lb);
+	}
 
 	@GET
 	@Path("/pagelogement/{page}/{size}")

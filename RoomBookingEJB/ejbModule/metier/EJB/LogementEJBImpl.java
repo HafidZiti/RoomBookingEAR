@@ -1,6 +1,4 @@
 package metier.EJB;
-
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import Beans.LogementBean;
 import metier.dao.LogementLocal;
 import metier.entities.Equipement;
 import metier.entities.Logement;
@@ -20,12 +19,46 @@ public class LogementEJBImpl implements LogementLocal {
 	@PersistenceContext(unitName="RoomBookingEJB")
 	private EntityManager em;
 	
-	
-	
 	@Override
 	public Logement addLogement(Logement L) {
+		
+		Logement l0 = new Logement();
+		l0=L;
+		Set<Equipement> equips = L.getEquipements();
+		Collection<metier.entities.Image> images = L.getImages();
 		em.persist(L);
+		images.forEach((i) -> {i.setLogement(L);System.out.println("Afficher 003"+i.toString());em.persist(i);});
+		
+		
+//		L.setEquipements(equips);
+//		equips.forEach((e) -> {L System.out.println("Afficher 002"+e.toString());});
+//	    System.out.println("Afficher 001"+L.toString());
+//		Logement l = new Logement();
+//		L.getEquipements().forEach((e) -> {System.out.println("Afficher 002"+e.toString());L.getEquipements().add(em.find(Equipement.class, e.getId_equip()));}); 
+//	    L.getEquipements().add(em.find(Equipement.class, 1));
+	    
 		return L;
+	}
+	
+	@Override
+	public Logement addLogementBean(LogementBean lb) {
+		
+		System.out.println("helleo la inserion");	
+//		System.out.println("Afficher 00 " + lb);
+//		System.out.println("Affiche 01 "+ lb.getLogement());
+//		lb.getEquipements().forEach((e) -> {System.out.println("Afficher 02 " + e);});
+//		lb.getImages().forEach((i) -> {System.out.println("Afficher 03 " + i);});
+//		return null;	
+		Logement l = new Logement();
+		l = lb.getLogement();
+		em.persist(l);
+	    //em.flush();
+		Logement l01 = em.find(Logement.class, l.getId_logement());
+		l01.getEquipements().add(em.find(Equipement.class, 1));
+		//add_equip_logement(l.getId_logement(), lb.getEquipements());
+		//lb.getEquipements().forEach((e) -> {lb.getLogement().getEquipements().add(em.find(Equipement.class, 1));});
+		//lb.getImages().forEach((i) -> {em.persist(i);});
+		return lb.getLogement();
 	}
 	
 	@Override
