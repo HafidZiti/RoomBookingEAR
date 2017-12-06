@@ -39,6 +39,13 @@ public class DispoRestService {
 	public Disponibilite getDisponibilite(@PathParam(value="id") int id) {
 		return metier.getDisponibilite(id);
 	}
+	
+	@GET
+	@Path("/dispos/logement/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Disponibilite> getDisponibiliteLogement(@PathParam(value="id") int id) {
+		return metier.getDisponibiliteLogement(id);
+	}
 
 	@GET
 	@Path("/dispos")

@@ -12,6 +12,7 @@ public interface DispoLocal {
 	
 	public Disponibilite addDisponibilite(Disponibilite d);
 	public Disponibilite getDisponibilite(int id);
+	public List<Disponibilite> getDisponibiliteLogement(int id);
 	public List<Disponibilite> getAllDisponibilite();
 	public Disponibilite updateDisponibilite(int id, Date date_debut, Date date_fin);
 	public void DeleteDisponibilite(int id);

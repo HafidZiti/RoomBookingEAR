@@ -33,6 +33,12 @@ public class DispoEJBImpl implements DispoLocal {
 	}
 
 	@Override
+	public List<Disponibilite> getDisponibiliteLogement(int id) {
+		Query req = em.createQuery("select d from Disponibilite d where d.logement ="+id);
+		return req.getResultList();
+	}
+
+	@Override
 	public List<Disponibilite> getAllDisponibilite() {
 		Query req = em.createQuery("select d from Disponibilite d");
 		return req.getResultList();
