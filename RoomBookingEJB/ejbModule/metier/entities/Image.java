@@ -61,9 +61,10 @@ public class Image implements Serializable{
 	public void setLogement(Logement logement) {
 		this.logement = logement;
 	}
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Image [id_image=" + id_image + ", path=" + path + ", logement=" + logement + "]";
+	}
 
 }

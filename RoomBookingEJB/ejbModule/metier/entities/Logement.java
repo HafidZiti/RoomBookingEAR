@@ -43,7 +43,7 @@ public class Logement implements Serializable {
 	@OneToMany(mappedBy = "logement", fetch = FetchType.EAGER)
 	private Collection<Image> images;
 
-	@ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER) // LAZY il va pas charger la liste des
+	@ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER) // LAZY il va pas charger la liste des
 																		// equipements
 	
 	@JoinTable(name = "logement_equipement02", joinColumns = @JoinColumn(name = "id_logement"), 
