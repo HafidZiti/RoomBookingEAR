@@ -44,14 +44,27 @@ public class ClientEJBImpl implements ClientLocal {
 	}
 
 	@Override
-	public Client updateClient(int id, String adresse, String email, String telephone, String nom, String prenom) {
+	public Client updateClient(int id, String adresse, String email, String telephone, String nom, String prenom , Boolean isHote) {
 		Client p = em.find(Client.class, id);
 		p.setAdresse(adresse);
 		p.setEmail(email);
 		p.setNom(nom);
 		p.setPrenom(prenom);
 		p.setTelephone(telephone);
-		//em.merge(p);
+		p.setIsHote(isHote);
+		em.merge(p);
+		return p;
+	}
+	@Override
+	public Client updateClient(Client l) {
+		Client p = em.find(Client.class, l.getId_client());
+		p.setAdresse(l.getAdresse());
+		p.setEmail(l.getEmail());
+		p.setNom(l.getNom());
+		p.setPrenom(l.getPrenom());
+		p.setTelephone(l.getTelephone());
+		p.setIsHote(l.getIsHote());
+		em.merge(p);
 		return p;
 	}
 

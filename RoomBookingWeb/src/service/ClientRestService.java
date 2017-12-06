@@ -32,6 +32,13 @@ public class ClientRestService {
 		return metier.addClient(L);
 	}
 	
+	@POST
+	@Path("/client/update") //JSON(application/json)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Client updateClient(Client L) {
+		return metier.updateClient(L);
+	}
+	
 	@GET
 	@Path("/client/login/{email}/{mdp}")
 	@Produces(MediaType.APPLICATION_JSON)
@@ -55,15 +62,10 @@ public class ClientRestService {
 	}
 
 	@PUT
-	@Path("/client/update")
+	@Path("/client/put/update")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Client updateClient(@FormParam(value="id") int id, 
-								@FormParam(value="adresse") String adresse, 
-								@FormParam(value="email") String email, 
-								@FormParam(value="telephone") String telephone,
-								@FormParam(value="nom") String nom, 
-								@FormParam(value="prenom") String prenom) {
-		return metier.updateClient(id, adresse, email, telephone, nom, prenom);
+	public Client updateClientOldV(Client client) {
+		return metier.updateClient(client.getId_client(), "", "", "", "", "" ,true);
 	}
 
 	@DELETE
