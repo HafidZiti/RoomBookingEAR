@@ -31,14 +31,14 @@ public class LogementEJBImpl implements LogementLocal {
 
 		Logement l0 = new Logement();
 		l0 = L;
-		Set<Equipement> equips = L.getEquipements();
-		Collection<metier.entities.Image> images = L.getImages();
+		//Set<Equipement> equips = L.getEquipements();
+		//Collection<metier.entities.Image> images = L.getImages();
 		em.persist(L);
-		images.forEach((i) -> {
-			i.setLogement(L);
-			System.out.println("Afficher 003" + i.toString());
-			em.persist(i);
-		});
+//		images.forEach((i) -> {
+//			i.setLogement(L);
+//			System.out.println("Afficher 003" + i.toString());
+//			em.persist(i);
+//		});
 
 		// L.setEquipements(equips);
 		// equips.forEach((e) -> {L System.out.println("Afficher
@@ -147,7 +147,9 @@ public class LogementEJBImpl implements LogementLocal {
 		
 		long countResult = (long) queryTotal.getSingleResult();
 		int nbrs = (int) ((countResult / size));
-
+		if ((countResult % size) > 0) {
+			nbrs ++ ;
+		}
 		PageLogement pagelog = new PageLogement();
 		pagelog.setLogemens(fooList);
 		pagelog.setTotalLogement(countResult);
