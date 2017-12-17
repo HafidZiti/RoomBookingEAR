@@ -169,6 +169,15 @@ public class Client implements Serializable {
 	public void setIsHote(Boolean isHote) {
 		this.isHote = isHote;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Client [id_client=" + id_client + ", nom=" + nom + ", prenom=" + prenom + ", email=" + email
+				+ ", telephone=" + telephone + ", adresse=" + adresse + ", mdp=" + mdp + ", isHote=" + isHote
+				+ ", reservations=" + reservations + ", reclamations=" + reclamations + ", commentaires_donne="
+				+ commentaires_donne + ", commentaires_subi=" + commentaires_subi + ", logements=" + logements + "]";
+	}
 	
 	
    

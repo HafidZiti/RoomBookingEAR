@@ -14,6 +14,9 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.sun.mail.iap.Response;
+
+
 import metier.dao.ReservationLocal;
 import metier.entities.Reservation;
 
@@ -23,10 +26,12 @@ public class ReservationRestService {
 	
 	@EJB
 	private ReservationLocal metier;
-
+	
+	
+    
 	
 	@POST
-	@Path("/reservation") //JSON(application/json)
+	@Path("reservation") //JSON(application/json)
 	@Produces(MediaType.APPLICATION_JSON)
 	public Reservation addReservation(Reservation R) {
 		return metier.addReservation(R);
@@ -34,7 +39,7 @@ public class ReservationRestService {
 
 	
 	@GET
-	@Path("/reservation/{id}")
+	@Path("reservation/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Reservation getReservation(@PathParam(value="id") int id) {
 		return metier.getReservation(id);
@@ -42,7 +47,7 @@ public class ReservationRestService {
 
 	
 	@GET
-	@Path("/reservations")
+	@Path("reservations")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Reservation> getAllReservation() {
 		return metier.getAllReservation();
@@ -50,7 +55,7 @@ public class ReservationRestService {
 
 	
 	@PUT
-	@Path("/reservation/update")
+	@Path("reservation/update")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Reservation updateReservation(@FormParam(value="id") int id,
 										 @FormParam(value="duree") int duree) {
@@ -58,10 +63,12 @@ public class ReservationRestService {
 	}
 
 	@DELETE
-	@Path("/reservation/{id}")
+	@Path("reservation/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public void deleteReservation(@PathParam(value="id") int id) {
 		metier.deleteReservation(id);
 	}
+	
+
 
 }
