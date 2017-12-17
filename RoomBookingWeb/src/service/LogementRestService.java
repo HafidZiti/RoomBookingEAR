@@ -100,6 +100,13 @@ public class LogementRestService {
 	}
 
 	@GET
+	@Path("/logementHote/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Logement> getLogementHote(@PathParam(value = "id") int id) {
+		return metier.getLogementHote(id);
+	}
+
+	@GET
 	@Path("/logements")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Logement> getAllLogement() {

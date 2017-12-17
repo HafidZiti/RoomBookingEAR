@@ -16,6 +16,7 @@ import javax.persistence.Query;
 
 import Beans.LogementBean;
 import metier.dao.LogementLocal;
+import metier.entities.Client;
 import metier.entities.Disponibilite;
 import metier.entities.Equipement;
 import metier.entities.Logement;
@@ -118,6 +119,14 @@ public class LogementEJBImpl implements LogementLocal {
 		}
 
 	}
+
+	
+	@Override
+	public List<Logement> getLogementHote(int id_client) {
+
+		Query query = em.createQuery("select l from Logement l where l.client.id_client='"+id_client+"'");
+		return query.getResultList();
+		}
 
 	@Override
 	public PageLogement getPageLogement(int page, int size, String ville, Date dateFrom, Date dateTo, int nbrVoyageur) {

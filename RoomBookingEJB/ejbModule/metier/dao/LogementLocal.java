@@ -15,9 +15,12 @@ import metier.entities.Logement;
 
 @Local
 public interface LogementLocal {
+	
 	public Logement addLogement(Logement L);
 
 	public Logement getLogement(int id);
+	
+	public List<Logement> getLogementHote(int id_client);
 
 	public List<Logement> getAllLogement();
 
