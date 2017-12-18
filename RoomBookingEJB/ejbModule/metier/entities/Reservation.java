@@ -19,8 +19,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 //@IdClass(Reservation_ID.class)
 public class Reservation implements Serializable {
 	
-	private Date date;
-	private int duree; // c'est le nombre de jours de réservation si la durée de cette dérniere n'est pas la meme que la disponiblité de logement
+	private Date dateDebut;
+	private Date dateFin;
+	private double prix; // c'est le nombre de jours de réservation si la durée de cette dérniere n'est pas la meme que la disponiblité de logement
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -43,34 +44,42 @@ public class Reservation implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(Date date, int duree, Client client, Logement logement) {
+	public Reservation(Date datedebut,Date datefin, double prix, Client client, Logement logement) {
 		super();
-		this.date = date;
-		this.duree = duree;
+		this.dateDebut = datedebut;
+		this.dateFin = datefin;
+		this.prix = prix;
 		this.client = client;
 		this.logement = logement;
 	}
 
-	public Reservation(Date date, int duree) {
+	public Reservation(Date datedebut,Date datefin) {
 		super();
-		this.date = date;
-		this.duree = duree;
+		this.dateDebut = datedebut;
+		this.dateFin = datefin;
 	}
 
-	public Date getDate() {
-		return date;
+	public Date getDateDebut() {
+		return dateDebut;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDateFin(Date datefin) {
+		this.dateFin = datefin;
+	}
+	public Date getDateFin() {
+		return dateFin;
 	}
 
-	public int getDuree() {
-		return duree;
+	public void setDateDebut(Date datedebut) {
+		this.dateDebut = datedebut;
 	}
 
-	public void setDuree(int duree) {
-		this.duree = duree;
+	public double getPrix() {
+		return prix;
+	}
+
+	public void setDuree(double prix) {
+		this.prix = prix;
 	}
 
 	public Client getClient() {
