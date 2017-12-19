@@ -19,9 +19,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 //@IdClass(Reservation_ID.class)
 public class Reservation implements Serializable {
 	
-	private Date dateDebut;
-	private Date dateFin;
-	private double prix; // c'est le nombre de jours de réservation si la durée de cette dérniere n'est pas la meme que la disponiblité de logement
+	private Date date_Debut;
+	private Date date_Fin;
+	private int prix_duree; 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -39,47 +39,59 @@ public class Reservation implements Serializable {
 	
 	
 
+	@Override
+	public String toString() {
+		return "Reservation [date_Debut=" + date_Debut + ", date_Fin=" + date_Fin + ", prix_duree=" + prix_duree
+				+ ", id_reservation=" + id_reservation + ", client=" + client + ", logement=" + logement + "]";
+	}
+
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(Date datedebut,Date datefin, double prix, Client client, Logement logement) {
+	public Reservation(Date date_Debut,Date date_Fin, int prix_duree, Client client, Logement logement) {
 		super();
-		this.dateDebut = datedebut;
-		this.dateFin = datefin;
-		this.prix = prix;
+		this.date_Debut = date_Debut;
+		this.date_Fin = date_Fin;
+		this.prix_duree = prix_duree;
 		this.client = client;
 		this.logement = logement;
 	}
 
-	public Reservation(Date datedebut,Date datefin) {
+	public Reservation(Date date_Debut,Date date_Fin) {
 		super();
-		this.dateDebut = datedebut;
-		this.dateFin = datefin;
+		this.date_Debut = date_Debut;
+		this.date_Fin = date_Fin;
 	}
 
-	public Date getDateDebut() {
-		return dateDebut;
+
+	
+
+	public Date getDate_Debut() {
+		return date_Debut;
 	}
 
-	public void setDateFin(Date datefin) {
-		this.dateFin = datefin;
-	}
-	public Date getDateFin() {
-		return dateFin;
+	public void setDate_Debut(Date date_Debut) {
+		this.date_Debut = date_Debut;
 	}
 
-	public void setDateDebut(Date datedebut) {
-		this.dateDebut = datedebut;
+	public Date getDate_Fin() {
+		return date_Fin;
 	}
 
-	public double getPrix() {
-		return prix;
+	public void setDate_Fin(Date date_Fin) {
+		this.date_Fin = date_Fin;
 	}
 
-	public void setDuree(double prix) {
-		this.prix = prix;
+	
+
+	public int getPrix_duree() {
+		return prix_duree;
+	}
+
+	public void setPrix_duree(int prix_duree) {
+		this.prix_duree = prix_duree;
 	}
 
 	public Client getClient() {

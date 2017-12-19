@@ -30,6 +30,12 @@ public class Disponibilite implements Serializable {
 		this.date_debut = date_debut;
 		this.date_fin = date_fin;
 	}
+	public Disponibilite(Date date_debut, Date date_fin , Logement l) {
+		super();
+		this.date_debut = date_debut;
+		this.date_fin = date_fin;
+		this.logement = l ;
+	}
 
 
 	public int getId_disponibilite() {
