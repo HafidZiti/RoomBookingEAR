@@ -45,11 +45,9 @@ public class LogementRestService {
 	}
 
 	@GET
-	@Path("/pagelogement/{page}/{size}/{ville}/{dateFrom}/{dateTo}/{nbrVoyageur}")
+	@Path("/pagelogement/{page}/{size}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public PageLogement getPageLogement(@PathParam(value = "page") int page, @PathParam(value = "size") int size,
-			@PathParam(value = "ville") String ville, @PathParam(value = "dateFrom") Date dateFrom,
-			@PathParam(value = "dateTo") Date dateTo, @PathParam(value = "nbrVoyageur") int nbrVoyageur) {
+	public PageLogement getPageLogement(@PathParam(value = "page") int page, @PathParam(value = "size") int size) {
 		return metier.getPageLogement(page, size);
 	}
 	@GET
