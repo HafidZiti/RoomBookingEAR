@@ -19,8 +19,9 @@ import com.fasterxml.jackson.annotation.JsonSetter;
 //@IdClass(Reservation_ID.class)
 public class Reservation implements Serializable {
 	
-	private Date date;
-	private int duree; // c'est le nombre de jours de réservation si la durée de cette dérniere n'est pas la meme que la disponiblité de logement
+	private Date date_Debut;
+	private Date date_Fin;
+	private int prix_duree; 
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -38,39 +39,59 @@ public class Reservation implements Serializable {
 	
 	
 
+	@Override
+	public String toString() {
+		return "Reservation [date_Debut=" + date_Debut + ", date_Fin=" + date_Fin + ", prix_duree=" + prix_duree
+				+ ", id_reservation=" + id_reservation + ", client=" + client + ", logement=" + logement + "]";
+	}
+
 	public Reservation() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reservation(Date date, int duree, Client client, Logement logement) {
+	public Reservation(Date date_Debut,Date date_Fin, int prix_duree, Client client, Logement logement) {
 		super();
-		this.date = date;
-		this.duree = duree;
+		this.date_Debut = date_Debut;
+		this.date_Fin = date_Fin;
+		this.prix_duree = prix_duree;
 		this.client = client;
 		this.logement = logement;
 	}
 
-	public Reservation(Date date, int duree) {
+	public Reservation(Date date_Debut,Date date_Fin) {
 		super();
-		this.date = date;
-		this.duree = duree;
+		this.date_Debut = date_Debut;
+		this.date_Fin = date_Fin;
 	}
 
-	public Date getDate() {
-		return date;
+
+	
+
+	public Date getDate_Debut() {
+		return date_Debut;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate_Debut(Date date_Debut) {
+		this.date_Debut = date_Debut;
 	}
 
-	public int getDuree() {
-		return duree;
+	public Date getDate_Fin() {
+		return date_Fin;
 	}
 
-	public void setDuree(int duree) {
-		this.duree = duree;
+	public void setDate_Fin(Date date_Fin) {
+		this.date_Fin = date_Fin;
+	}
+
+	
+
+	public int getPrix_duree() {
+		return prix_duree;
+	}
+
+	public void setPrix_duree(int prix_duree) {
+		this.prix_duree = prix_duree;
 	}
 
 	public Client getClient() {

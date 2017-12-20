@@ -1,5 +1,6 @@
 package metier.dao;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Local;
@@ -15,6 +16,7 @@ public interface ReservationLocal {
 	public List<Reservation> getAllReservation();
 	public Reservation updateReservation(int id,int duree);
 	public void deleteReservation(int id);
+	Reservation updateReservation(int id, Date datefin);
 	
 
 }
