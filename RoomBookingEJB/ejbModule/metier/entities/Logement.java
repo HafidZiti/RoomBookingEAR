@@ -1,9 +1,7 @@
 package metier.entities;
 
 import java.io.Serializable;
-import java.lang.String;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -49,24 +47,24 @@ public class Logement implements Serializable {
 	@JoinTable(name = "logement_equipement02", joinColumns = @JoinColumn(name = "id_logement"), 
 												inverseJoinColumns = @JoinColumn(name = "id_equip"))
 
-	private Set<Equipement> equipements; // c'est mieux d'utiliser Set ou lieu de liste vu que JPA genère Automatiqement
+	private Set<Equipement> equipements; // c'est mieux d'utiliser Set ou lieu de liste vu que JPA genï¿½re Automatiqement
 											// Primary Key of Join Table et c'est pas le cas avec List
 
 	public Logement() {
 		super();
 	}
 
-	public Logement(int id_logement, String titre, int nbt_voyageurs, int nbr_chamber, int nbr_salle_bain, double prix,
-			String ville, int code_postal, String adresse, String description) {
+	public Logement(int idLogement, String titre, int nbtVoyageurs, int nbrChamber, int nbrSalleBbain, double prix,
+			String ville, int codePostal, String adresse, String description) {
 		super();
-		this.id_logement = id_logement;
+		this.id_logement = idLogement;
 		this.titre = titre;
-		this.nbt_voyageurs = nbt_voyageurs;
-		this.nbr_chamber = nbr_chamber;
-		this.nbr_salle_bain = nbr_salle_bain;
+		this.nbt_voyageurs = nbtVoyageurs;
+		this.nbr_chamber = nbrChamber;
+		this.nbr_salle_bain = nbrSalleBbain;
 		this.prix = prix;
 		this.ville = ville;
-		this.code_postal = code_postal;
+		this.code_postal = codePostal;
 		this.adresse = adresse;
 		this.description = description;
 	}
@@ -75,8 +73,8 @@ public class Logement implements Serializable {
 		return this.id_logement;
 	}
 
-	public void setId_logement(int id_logement) {
-		this.id_logement = id_logement;
+	public void setId_logement(int idLogement) {
+		this.id_logement = idLogement;
 	}
 
 	public String getDescription() {
@@ -129,36 +127,20 @@ public class Logement implements Serializable {
 		this.titre = titre;
 	}
 
-	public int getNbt_voya_adultes() {
-		return nbt_voyageurs;
-	}
-
-	public void setNbt_voya_adultes(int nbt_voya_adultes) {
-		this.nbt_voyageurs = nbt_voya_adultes;
-	}
-
-	public int getNbt_voya_enfants() {
-		return nbt_voyageurs;
-	}
-
-	public void setNbt_voya_enfants(int nbt_voya_enfants) {
-		this.nbt_voyageurs = nbt_voya_enfants;
-	}
-
 	public int getNbr_chamber() {
 		return nbr_chamber;
 	}
 
-	public void setNbr_chamber(int nbr_chamber) {
-		this.nbr_chamber = nbr_chamber;
+	public void setNbr_chamber(int nbrChamber) {
+		this.nbr_chamber = nbrChamber;
 	}
 
 	public int getNbr_salle_bain() {
 		return nbr_salle_bain;
 	}
 
-	public void setNbr_salle_bain(int nbr_salle_bain) {
-		this.nbr_salle_bain = nbr_salle_bain;
+	public void setNbr_salle_bain(int nbrSalleBSain) {
+		this.nbr_salle_bain = nbrSalleBSain;
 	}
 
 	public double getPrix() {
@@ -181,16 +163,16 @@ public class Logement implements Serializable {
 		return code_postal;
 	}
 
-	public void setCode_postal(int code_postal) {
-		this.code_postal = code_postal;
+	public void setCode_postal(int codePostal) {
+		this.code_postal = codePostal;
 	}
 
 	public int getNbt_voyageurs() {
 		return nbt_voyageurs;
 	}
 
-	public void setNbt_voyageurs(int nbt_voyageurs) {
-		this.nbt_voyageurs = nbt_voyageurs;
+	public void setNbt_voyageurs(int nbtVoyageurs) {
+		this.nbt_voyageurs = nbtVoyageurs;
 	}
 
 	@JsonIgnore
@@ -203,12 +185,10 @@ public class Logement implements Serializable {
 		this.images = images;
 	}
 
-	// @JsonIgnore
 	public Set<Equipement> getEquipements() {
 		return this.equipements;
 	}
 
-	//@JsonSetter
 	public void setEquipements(Set<Equipement> equipements) {
 		this.equipements = equipements;
 	}

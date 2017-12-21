@@ -54,13 +54,6 @@ public class ReservationRestService {
 	}
 
 	
-	@PUT
-	@Path("reservation/update")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Reservation updateReservation(@FormParam(value="id") int id,
-										 @FormParam(value="duree") int duree) {
-		return metier.updateReservation(id, duree);
-	}
 
 	@DELETE
 	@Path("reservation/{id}")

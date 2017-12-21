@@ -24,34 +24,33 @@ public class ReservationEJBImpl implements ReservationLocal {
 	private EntityManager em;
 
 	@Override
-	public Reservation addReservation(Reservation R) {
+	public Reservation addReservation(Reservation reservation) {
 
 		try {
-
-			em.persist(R);
-			Disponibilite d = new Disponibilite(R.getDate_Debut(), R.getDate_Fin(), R.getLogement());
+			em.persist(reservation);
+			Disponibilite d = new Disponibilite(reservation.getDate_Debut(), reservation.getDate_Fin(), reservation.getLogement());
 			em.persist(d);
-			Client client = em.find(Client.class, R.getClient().getId_client());
-			Logement logement = em.find(Logement.class, R.getLogement().getId_logement());
+			Client client = em.find(Client.class, reservation.getClient().getId_client());
+			Logement logement = em.find(Logement.class, reservation.getLogement().getId_logement());
 			Client hote = em.find(Client.class, logement.getClient().getId_client());
-
-			SendMailtoClient(client, hote, logement, R);
+			SendMailtoClient(client, hote, logement, reservation);
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 
-		return R;
+		return reservation;
 	}
 
 	public void SendMailtoClient(Client client, Client hote, Logement logement, Reservation r) {
 
 		Session session = MailSender.initSession();
-		SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd-MM-yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
-		String clientMessage = "Cher " + client.getNom() + "," + " vous avez reservé le logement " + logement.getTitre()+ " du "+DATE_FORMAT.format(r.getDate_Debut())+" au "+DATE_FORMAT.format(r.getDate_Fin())+ " pour un prix de "+r.getPrix_duree()+"€.";
+		String clientMessage = "Cher " + client.getNom() + "," + " vous avez reservï¿½ le logement " + logement.getTitre()+ " du "+dateFormat.format(r.getDate_Debut())+" au "+dateFormat.format(r.getDate_Fin())+ " pour un prix de "+r.getPrix_duree()+"ï¿½.";
 		MailSender.send(client.getEmail(), clientMessage, session);
 
-		String hoteMessage = "Cher " + hote.getNom() + "," + " votre logement " + logement.getTitre()+ " a été réservé par " + client.getNom()+". \n\n La réservation  sera du "+DATE_FORMAT.format(r.getDate_Debut())+" au "+DATE_FORMAT.format(r.getDate_Fin())+ " pour un prix de "+r.getPrix_duree()+"€.";
+		String hoteMessage = "Cher " + hote.getNom() + "," + " votre logement " + logement.getTitre()+ " a ï¿½tï¿½ rï¿½servï¿½ par " + client.getNom()+". \n\n La rï¿½servation  sera du "+dateFormat.format(r.getDate_Debut())+" au "+dateFormat.format(r.getDate_Fin())+ " pour un prix de "+r.getPrix_duree()+"ï¿½.";
 		MailSender.send(hote.getEmail(), hoteMessage, session);
 	}
 
@@ -85,11 +84,6 @@ public class ReservationEJBImpl implements ReservationLocal {
 
 	}
 
-	@Override
-	public Reservation updateReservation(int id, int duree) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 

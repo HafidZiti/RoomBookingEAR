@@ -43,7 +43,7 @@ public class MailSender {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(companyAdress));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mail));
-			message.setSubject("Confirmation de réservation");
+			message.setSubject("Confirmation de rï¿½servation");
 			message.setText(corpsMessage);
 
 			Transport.send(message);

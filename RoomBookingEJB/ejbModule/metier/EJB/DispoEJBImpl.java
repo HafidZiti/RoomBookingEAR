@@ -45,11 +45,10 @@ public class DispoEJBImpl implements DispoLocal {
 	}
 
 	@Override
-	public Disponibilite updateDisponibilite(int id, Date date_debut, Date date_fin) {
+	public Disponibilite updateDisponibilite(int id, Date dateFrom, Date dateTo) {
 		Disponibilite d = em.find(Disponibilite.class, id);
-		d.setDate_debut(date_debut);
-		d.setDate_fin(date_fin);
-		//em.merge(p);
+		d.setDate_debut(dateFrom);
+		d.setDate_fin(dateTo);
 		return d;
 	}
 

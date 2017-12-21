@@ -14,7 +14,6 @@ public interface ReservationLocal {
 	public Reservation addReservation(Reservation R);
 	public Reservation getReservation(int id);
 	public List<Reservation> getAllReservation();
-	public Reservation updateReservation(int id,int duree);
 	public void deleteReservation(int id);
 	Reservation updateReservation(int id, Date datefin);
 	
