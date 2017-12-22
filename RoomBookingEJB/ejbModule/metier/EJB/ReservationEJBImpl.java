@@ -30,10 +30,7 @@ public class ReservationEJBImpl implements ReservationLocal {
 			em.persist(reservation);
 			Disponibilite d = new Disponibilite(reservation.getDate_Debut(), reservation.getDate_Fin(), reservation.getLogement());
 			em.persist(d);
-			Client client = em.find(Client.class, reservation.getClient().getId_client());
-			Logement logement = em.find(Logement.class, reservation.getLogement().getId_logement());
-			Client hote = em.find(Client.class, logement.getClient().getId_client());
-			SendMailtoClient(client, hote, logement, reservation);
+			SendMailtoClient(reservation.getClient(), reservation.getLogement().getClient(), reservation.getLogement(), reservation);
 
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

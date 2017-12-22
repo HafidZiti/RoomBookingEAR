@@ -175,12 +175,10 @@ public class Logement implements Serializable {
 		this.nbt_voyageurs = nbtVoyageurs;
 	}
 
-	@JsonIgnore
 	public Collection<Image> getImages() {
 		return images;
 	}
 
-	@JsonSetter
 	public void setImages(Collection<Image> images) {
 		this.images = images;
 	}
